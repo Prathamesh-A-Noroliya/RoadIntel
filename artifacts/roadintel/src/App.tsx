@@ -22,85 +22,39 @@ import Sensors from "@/pages/sensors";
 import Contractors from "@/pages/contractors";
 import Analytics from "@/pages/analytics";
 import Settings from "@/pages/settings";
+import SOS from "@/pages/sos";
+import Assistant from "@/pages/assistant";
+import Subscribe from "@/pages/subscribe";
 
 const queryClient = new QueryClient();
+
+function AppRoute({ path, children }: { path: string; children: React.ReactNode }) {
+  return <Route path={path}><AppLayout>{children}</AppLayout></Route>;
+}
 
 function Router() {
   return (
     <Switch>
-      {/* Public / Marketing Routes */}
-      <Route path="/">
-        <RootLayout>
-          <Landing />
-        </RootLayout>
-      </Route>
-      <Route path="/login">
-        <RootLayout>
-          <Login />
-        </RootLayout>
-      </Route>
-      <Route path="/register">
-        <RootLayout>
-          <Register />
-        </RootLayout>
-      </Route>
+      {/* Public */}
+      <Route path="/"><RootLayout><Landing /></RootLayout></Route>
+      <Route path="/login"><RootLayout><Login /></RootLayout></Route>
+      <Route path="/register"><RootLayout><Register /></RootLayout></Route>
 
-      {/* App Routes with Sidebar */}
-      <Route path="/dashboard">
-        <AppLayout>
-          <Dashboard />
-        </AppLayout>
-      </Route>
-      <Route path="/complaints">
-        <AppLayout>
-          <Complaints />
-        </AppLayout>
-      </Route>
-      <Route path="/scan">
-        <AppLayout>
-          <Scan />
-        </AppLayout>
-      </Route>
-      <Route path="/roads">
-        <AppLayout>
-          <Roads />
-        </AppLayout>
-      </Route>
-      <Route path="/roads/:id">
-        <AppLayout>
-          <RoadDetail />
-        </AppLayout>
-      </Route>
-      <Route path="/risk-map">
-        <AppLayout>
-          <RiskMap />
-        </AppLayout>
-      </Route>
-      <Route path="/spending">
-        <AppLayout>
-          <Spending />
-        </AppLayout>
-      </Route>
-      <Route path="/sensors">
-        <AppLayout>
-          <Sensors />
-        </AppLayout>
-      </Route>
-      <Route path="/contractors">
-        <AppLayout>
-          <Contractors />
-        </AppLayout>
-      </Route>
-      <Route path="/analytics">
-        <AppLayout>
-          <Analytics />
-        </AppLayout>
-      </Route>
-      <Route path="/settings">
-        <AppLayout>
-          <Settings />
-        </AppLayout>
-      </Route>
+      {/* App */}
+      <AppRoute path="/dashboard"><Dashboard /></AppRoute>
+      <AppRoute path="/complaints"><Complaints /></AppRoute>
+      <AppRoute path="/scan"><Scan /></AppRoute>
+      <AppRoute path="/roads"><Roads /></AppRoute>
+      <AppRoute path="/roads/:id"><RoadDetail /></AppRoute>
+      <AppRoute path="/risk-map"><RiskMap /></AppRoute>
+      <AppRoute path="/spending"><Spending /></AppRoute>
+      <AppRoute path="/sensors"><Sensors /></AppRoute>
+      <AppRoute path="/contractors"><Contractors /></AppRoute>
+      <AppRoute path="/analytics"><Analytics /></AppRoute>
+      <AppRoute path="/settings"><Settings /></AppRoute>
+      <AppRoute path="/sos"><SOS /></AppRoute>
+      <AppRoute path="/assistant"><Assistant /></AppRoute>
+      <AppRoute path="/subscribe"><Subscribe /></AppRoute>
 
       <Route component={NotFound} />
     </Switch>
