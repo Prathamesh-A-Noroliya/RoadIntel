@@ -11,7 +11,7 @@ router.get("/contractors", async (req, res) => {
     res.json(result.map(c => ({
       id: c.id, name: c.name, location: c.location ?? "India",
       roadsManaged: c.roadsManaged ?? 0, totalContracts: c.totalContracts ?? 0,
-      totalValue: c.totalContractValue ?? 0, avgHealthScore: c.averageRoadHealthScore ?? 50,
+      totalValue: c.totalValue ?? 0,avgHealthScore: c.avgHealthScore ?? 50,
       trustScore: c.trustScore ?? 50, failedRoads: c.failedRoads ?? 0,
       repeatFailures: c.repeatFailures ?? 0, corruptionFlags: c.corruptionFlags ?? 0,
       status: c.status ?? "active",

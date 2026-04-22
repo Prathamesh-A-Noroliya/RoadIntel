@@ -34,7 +34,7 @@ router.get("/spending/contractor-breakdown", async (req, res) => {
     const cs = await db.select().from(contractors);
     const result = cs.map(c => ({
       contractorId: c.id, contractorName: c.name,
-      totalSpent: c.totalContractValue ?? 0,
+      totalSpent: c.totalValue ?? 0,
       qualityScore: c.qualityScore ?? 50,
       efficiency: c.costEfficiency ?? 50,
       flagged: (c.corruptionFlags ?? 0) > 0,
